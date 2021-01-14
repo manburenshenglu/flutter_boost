@@ -91,7 +91,7 @@ public class FlutterSplashView extends FrameLayout {
 
     public FlutterSplashView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        setBackgroundColor(Color.WHITE);
         setSaveEnabled(true);
         if (mFlutterEngine == null) {
             mFlutterEngine = FlutterBoost.instance().engineProvider();
