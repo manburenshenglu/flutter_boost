@@ -57,14 +57,13 @@ public class FlutterActivityAndFragmentDelegate implements IFlutterViewContainer
 
     private boolean isFlutterEngineFromHost;
 
-    private boolean isTransport;//FlutterSplashView的背景色是否透明
+    private boolean isTransport = false;//FlutterSplashView的背景色是否透明
 
     protected IOperateSyncer mSyncer;
 
 
-    public FlutterActivityAndFragmentDelegate(@NonNull Host host,boolean isTransport) {
+    public FlutterActivityAndFragmentDelegate(@NonNull Host host) {
         this.host = host;
-        this.isTransport = isTransport;
     }
 
     public void release() {

@@ -143,7 +143,8 @@ public class BoostFlutterActivity extends Activity
 
         lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
 
-        delegate = new FlutterActivityAndFragmentDelegate(this,isTransport);
+        delegate = new FlutterActivityAndFragmentDelegate(this);
+        delegate.setFlutterSplashViewBgMode(isTransport);
         delegate.onAttach(this);
 
         configureWindowForTransparency();
