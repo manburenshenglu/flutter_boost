@@ -11,8 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+import com.idlefish.flutterboost.Debuger;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.Utils;
 import com.idlefish.flutterboost.XFlutterView;
@@ -146,7 +145,7 @@ public class FlutterActivityAndFragmentDelegate implements IFlutterViewContainer
 
 
         flutterSplashView = new FlutterSplashView(host.getContext());
-        Log.d("flutterSplashView","isTransport="+isTransport);
+        Debuger.log("flutterSplashView isTransport="+isTransport);
         if (isTransport){
             flutterSplashView.setBackgroundColor(Color.TRANSPARENT);
         }
