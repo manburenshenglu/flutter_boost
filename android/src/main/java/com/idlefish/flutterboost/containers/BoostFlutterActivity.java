@@ -53,6 +53,7 @@ public class BoostFlutterActivity extends Activity
     protected static final String EXTRA_URL = "url";
     protected static final String EXTRA_PARAMS = "params";
 
+    protected boolean isTransport = false;//FlutterSplashView的背景色是否透明
 
     // Default configuration.
     protected static final String DEFAULT_BACKGROUND_MODE = BackgroundMode.opaque.name();
@@ -142,7 +143,7 @@ public class BoostFlutterActivity extends Activity
 
         lifecycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
 
-        delegate = new FlutterActivityAndFragmentDelegate(this);
+        delegate = new FlutterActivityAndFragmentDelegate(this,isTransport);
         delegate.onAttach(this);
 
         configureWindowForTransparency();

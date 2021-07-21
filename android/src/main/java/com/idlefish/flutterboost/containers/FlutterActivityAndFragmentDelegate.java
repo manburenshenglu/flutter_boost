@@ -5,11 +5,14 @@ import android.app.Activity;
 import androidx.lifecycle.Lifecycle;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,12 +58,14 @@ public class FlutterActivityAndFragmentDelegate implements IFlutterViewContainer
 
     private boolean isFlutterEngineFromHost;
 
+    private boolean isTransport;//FlutterSplashView的背景色是否透明
 
     protected IOperateSyncer mSyncer;
 
 
-    public FlutterActivityAndFragmentDelegate(@NonNull Host host) {
+    public FlutterActivityAndFragmentDelegate(@NonNull Host host,boolean isTransport) {
         this.host = host;
+        this.isTransport = isTransport;
     }
 
     public void release() {
@@ -124,6 +129,9 @@ public class FlutterActivityAndFragmentDelegate implements IFlutterViewContainer
         isFlutterEngineFromHost = false;
     }
 
+    public void  setFlutterSplashViewBgMode(boolean isTransport){
+        this.isTransport = isTransport;
+    }
 
     @SuppressLint("ResourceType")
     @NonNull
@@ -138,6 +146,10 @@ public class FlutterActivityAndFragmentDelegate implements IFlutterViewContainer
 
 
         flutterSplashView = new FlutterSplashView(host.getContext());
+        Log.d("flutterSplashView","isTransport="+isTransport);
+        if (isTransport){
+            flutterSplashView.setBackgroundColor(Color.TRANSPARENT);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             flutterSplashView.setId(View.generateViewId());
         } else {
